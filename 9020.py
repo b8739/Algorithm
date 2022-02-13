@@ -13,36 +13,23 @@ def primeSieve(num):
 def getGoldBach():
     # 짝수 받기
     even = int(input()) #10 
-    candidate = []
     #하나씩 감소하면서, 자신보다 작으면서 가장 근접한 소수 찾기
-    for n in range(even,1,-1):
-        if primes[n] and primes[even-n]:
-            #비어있으면 아직 못 찾은거니 넣음
-            if not candidate:
-                candidate = [n, even-n]
-            #이미 존재한다면, 비교해서 차가 작은 값을 넣음
-            else:
-                a = abs(candidate[0]-candidate[1])
-                b = abs(n-(even-n))
-                if a>b: 
-                    candidate[0] = n
-                    candidate[1] = even-n
-    candidate.sort();
-
-    print (f'{candidate[0]} {candidate[1]}')
+    for n in range(even//2,1,-1): 
+        if sieve[n] and sieve[even-n]:
+            print (f'{n} {even-n}')
+            break
     return     
-        
-#짝수
 
-primes = primeSieve(10000)
-
-# print(primes)
-# primes.reverse()
+sieve = primeSieve(10000)
 
 test = int(input())
 
 for t in range(test):
     getGoldBach()
+
+#변경사항
+#23번줄: t를 돌때마다 채를 찾는게 아니라 primeSieve로 미리 구함
+#17번줄: 두 소수의 차이가 가장 작은것을 출력하여야 하고, 작은 소수부터 출력을 하기 때문에 짝수를 2로 나눈 몫부터 시작한다. 두 소수를 찾으면 break.
 
 
 
