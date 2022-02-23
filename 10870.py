@@ -1,3 +1,4 @@
+#피보나치
 def getPivonachi(n):
     pivo = [0,1]
     for _ in range(n-1):
