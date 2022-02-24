@@ -1,23 +1,24 @@
-# 1931번 회의
- 
-"""첫번째 실패 """
-# dict는 키가 똑같은 쌍이 있을 수가 없는데 이 사실을 간과함
+#끝나는 시간은 무조건 시작 시간보다 크므로, 끝나는 시간이 낮은거 기준으로 해야함
+#시작 시간이 같다면, 끝나는 시간이 낮은게 좋음
+
+"""두번째 실패"""
 n = int(input())
-c = {}
+time = [[0]*2 for _ in range(n)]
+
 cnt = 1
 
-for _ in range(n):
-    s,e= input().split()
-    c[s] = int(e)
-    
-sorted_dict = sorted(c.items(), key = lambda item: item[1])
+for i in range(n):
+    s,e= map(int,input().split())
+    time[i][0] = s
+    time[i][1] = e   
+#time = [[s,e],[s,e],[s,e],[s,e]]
 
-t = sorted_dict[0][1]
+time.sort(key = lambda x: (x[1], x[0]))
 
-for i in sorted_dict[1:]:
-    if t <= int(i[0]):
-        print(i)
-        t = i[1]
+end = time[0][1]
+
+for i in time[1:]:
+    if end <= i[0]:
+        end = i[1]
         cnt+=1
 print(cnt)    
-
