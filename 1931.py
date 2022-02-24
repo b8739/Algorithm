@@ -1,6 +1,6 @@
 # 1931번 회의
  
-""" 두번째 실패 """
+""" 성공 """
 # 17번째 줄의 lambda에서 두번째 index는 고려 안 함
 
 n = int(input())
@@ -14,7 +14,7 @@ for i in range(n):
     time[i][1] = e   
 
 
-time.sort(key = lambda x: (x[1]))
+time.sort(key = lambda x: (x[1],x[0]))
 
 end = time[0][1]
 
