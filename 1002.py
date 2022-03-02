@@ -9,7 +9,7 @@ for _ in range(t):
     if d==0 and r1==r2:
         print(-1)   
     elif abs(r2-r1)==d or r1+r2==d :
-        print(1)
+        print(1) 
 
     elif r2+r1<d or abs(r2-r1)>d:
          print(0)
