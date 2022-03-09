@@ -1,7 +1,14 @@
-조합으로 가능한 팀을 생성해준다
+import sys
+a,b,c = map(int,sys.stdin.readline().split())
 
-파서블 팀 = [(1,2,3),(1,2,3),(1,2,3),(1,2,3)]
-
-에이팀 능력치
-
-team = (1,2,3)
+def multi (a,n):
+  if n == 1:
+      return a%c
+  else:
+      tmp = multi(a,n//2)
+      if n %2 ==0:
+          return (tmp * tmp) % c
+      else:
+          return (tmp  * tmp *a) %c
+          
+print(multi(a,b))
