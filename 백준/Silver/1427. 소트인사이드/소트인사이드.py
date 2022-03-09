@@ -1,0 +1,7 @@
+n = input()
+n2 = list(map(int,n))
+# sorted(n2, reverse=True)
+n2.sort(reverse=True)
+n2 = list(map(str,n2))
+final = "".join(n2)
+print(final)
