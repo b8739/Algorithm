@@ -1,0 +1,24 @@
+def solution(answers):
+    
+    pattern_1 = [1, 2, 3, 4, 5]
+    pattern_2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    pattern_3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    
+    score = [0,0,0]
+    result = []
+    
+    for idx,ans in enumerate(answers):
+        if ans == pattern_1[idx%len(pattern_1)]:
+            score[0]+=1
+        if ans == pattern_2[idx%len(pattern_2)]:
+            score[1]+=1
+        if ans == pattern_3[idx%len(pattern_3)]:
+            score[2]+=1
+            
+    for idx,sco in enumerate(score):
+        if sco == max(score):
+            result.append(idx+1)
+    
+    result = list(set(result))
+    
+    return result
