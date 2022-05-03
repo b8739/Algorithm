@@ -1,4 +1,4 @@
 function solution(s) {
-    var answer = '';
-    return answer;
+    
+    return s.split('').sort().reverse().join('');
 }
