@@ -1,4 +1,3 @@
 function solution(n) {
-    var answer = [];
-    return answer;
+    return String(n).split('').reverse().map(x=>parseInt(x))
 }
