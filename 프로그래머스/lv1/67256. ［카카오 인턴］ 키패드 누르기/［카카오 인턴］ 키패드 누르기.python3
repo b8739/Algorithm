@@ -1,0 +1,45 @@
+def solution(numbers, hand):
+    answer = ''
+    
+    dict = {}
+    
+    x,y,idx = -1,-1,0
+    
+    for i in range(4):
+        x+=1
+        y=-1
+        for j in range(3):
+            y+=1
+            idx+=1
+            dict[idx] = [x,y]
+    dict[0] = [3,1]    
+    
+    lx,ly = 3,0
+    rx,ry = 3,2
+
+    for n in numbers:
+        if n == 1 or n ==4 or n ==7:
+            answer+='L'
+            lx,ly = dict[n][0],dict[n][1]
+        elif n == 3 or n ==6 or n ==9:
+            answer+='R'
+            rx,ry = dict[n][0],dict[n][1]
+        else:
+            l_dist = abs(lx-dict[n][0])+abs(ly-dict[n][1])
+            r_dist = abs(rx-dict[n][0])+abs(ry-dict[n][1])
+            
+            if l_dist<r_dist:
+                answer+='L'
+                lx,ly = dict[n][0],dict[n][1]
+            elif l_dist>r_dist:
+                answer+='R'
+                rx,ry = dict[n][0],dict[n][1]
+            else:
+                if hand == 'left':
+                    answer += 'L'
+                    lx,ly = dict[n][0],dict[n][1]
+                else:
+                    answer += 'R'
+                    rx,ry = dict[n][0],dict[n][1]
+            
+    return answer
