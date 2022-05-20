@@ -1,32 +1,33 @@
 n = int(input())
-graph = []
 
-cnt = 0
-count = []
+s = [list(map(int,input())) for _ in range(n)]
+
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+
 def dfs(x,y):
-    global cnt
-    if x>=n or y>=n or x<=-1 or y<=-1:
-        return False
-    #1일때만 방문등록
-    if graph[x][y] == 1:
-        graph[x][y] = 0
-        cnt+=1
-        dfs(x+1,y)
-        dfs(x-1,y)
-        dfs(x,y+1)
-        dfs(x,y-1)
-        return True
-    return False
+    cnt = 0
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if -1<nx<n and -1<ny<n and s[nx][ny]==1:
+            s[nx][ny] = 0
+            cnt+=1
+            cnt += dfs(nx,ny)
+    return cnt 
 
-for _ in range(n):
-    graph.append(list(map(int,input())))
+result = []
 
 for i in range(n):
     for j in range(n):
-        if dfs(i,j) == True:
-            count.append(cnt)
-            cnt = 0
-print(len(count))
-count.sort()
-for c in count:
-    print(c)
+        if (s[i][j]==1): 
+            result.append(dfs(i,j))
+
+result.sort()    
+
+print(len(result))
+
+for r in result:
+    if r ==0: print(1)
+    else: print(r)
